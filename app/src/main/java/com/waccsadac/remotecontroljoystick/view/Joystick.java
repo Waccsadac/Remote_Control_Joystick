@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.annotation.Nullable;
 public class Joystick extends View {
     private float outerX, outerY,innerX, innerY,outerRad,innerRad;
     Paint outerPaint, innerPaint;
+    boolean pressed;
     public OnChangeStrategy onChangeStrategy;
     private void ini() {
         outerX = innerX = Math.min(getWidth(),getHeight()) / 2;
@@ -29,6 +31,8 @@ public class Joystick extends View {
         innerPaint.setColor(Color.WHITE);
         //outerPaint.setColor(8388736);
         outerPaint.setColor(Color.RED);
+
+
     }
     public Joystick(Context context) {
         super(context);
@@ -85,25 +89,67 @@ public class Joystick extends View {
                 outerX, outerY) <= outerRad;
     }
 
-    public void setPosition(float x, float y) {
-        if (isPressed(x,y)){
+    public void setPosition(float x, float y, boolean trigger) {
+        if (!isPressed(x,y)){
             float delta_x = x - outerX;
             float delta_y = y - outerY;
             double dist = Math.sqrt(Math.pow(delta_x, 2) + Math.pow(delta_y, 2));
-            innerX = innerY + (float) (delta_x / dist) * outerRad;
+            innerX = outerX + (float) (delta_x / dist) * outerRad;
             innerY = outerY + (float) (delta_y / dist) * outerRad;
         } else {
-            innerY = x;
+            innerX = x;
             innerY = y;
         }
         postInvalidate();
+        if(trigger) {
+            onChangeStrategy.onChange((innerX - outerX)/outerRad,
+                    (innerY - outerY)/outerRad);
+        }
     }
 
-    public void reset(){
+    public void reset(boolean trigger){
         innerX = outerX;
         innerY = outerY;
         postInvalidate();
+        if(trigger) {
+            onChangeStrategy.onChange(0,0);
+        }
     }
 
+    public float getOuterRad(){
+        return outerRad;
+    }
 
+    public float getOuterX(){
+        return outerX;
+    }
+
+    public float getOuterY(){
+        return outerX;
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch(event.getAction()) {
+            case MotionEvent.ACTION_UP:
+                pressed = false;
+                reset(true);
+                return true;
+            case MotionEvent.ACTION_DOWN:
+                pressed = isPressed(event.getX(), event.getY());
+            case MotionEvent.ACTION_MOVE:
+                if(isPressed(event.getX(), event.getY()) || pressed) {
+
+                    setPosition(event.getX(),
+                            event.getY(), false);
+
+                    onChangeStrategy.onChange((innerX - outerX)/outerRad,
+                            (innerY - outerY)/outerRad);
+                    Log.d("innerX2",Float.toString(innerX));
+                    Log.d("innerX3",Float.toString(outerX));
+                    Log.d("innerX4",Float.toString(outerRad));
+                }
+                return true;
+        }
+        return super.onTouchEvent(event);
+    }
 }

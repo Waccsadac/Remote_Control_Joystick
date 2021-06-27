@@ -78,14 +78,14 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <com.waccsadac.remotecontroljoystick.view.Joystick
-            android:id="@+id/joystick2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/joystick"
+            android:layout_width="318dp"
+            android:layout_height="343dp"
+            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/horiz_sb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/connect_btn"
-            android:visibility="visible"/>
+            app:layout_constraintTop_toBottomOf="@+id/connect_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

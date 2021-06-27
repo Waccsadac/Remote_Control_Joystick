@@ -17,11 +17,11 @@ public class ViewModel {
     }
 
     public void update_aileron(double a) {
-
+        model.update_aileron((float)a);
     }
 
     public void update_elevator(double e) {
-
+        model.update_elevator((float)e);
     }
 
     public void update_throttle(int progress) {

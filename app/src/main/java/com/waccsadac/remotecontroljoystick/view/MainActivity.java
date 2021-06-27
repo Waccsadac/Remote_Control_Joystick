@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Assign variable
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
+        joystick = binding.joystick;
+        joystick.onChangeStrategy = (double a, double e) -> {vm.update_elevator(e); vm.update_aileron(a);};
         binding.ipTb.setText("192.168.231.229");
         binding.ipTb.setInputType(TYPE_CLASS_PHONE);
         binding.portTb.setInputType(TYPE_CLASS_PHONE);
@@ -76,15 +77,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch(event.getAction()) {
-            case MotionEvent.ACTION_UP:
-                joystick.reset();
 
-            case MotionEvent.ACTION_DOWN:
-
-        }
-        return true;
-    }
 }

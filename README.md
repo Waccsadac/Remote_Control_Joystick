@@ -3,70 +3,58 @@
 
 
 
-This Java script code is a web app for analyzing flights.
-This web app connects to a server, and display in a graphic way information regarding the flight
-Also, there is an option of choosing an anomaly detection algorithm to display the anomalies that were found during the flight.
+This Java script code is a Android app that let the user drive a plane.
+This Android app connects to Flight-Gear server, and give you a joystick, Rudder and Throttle Sliders to control the plane.
 
 ## Application description and goal
-Our users are flight researchers or pilots who want to learn from flight data.
-The flight data includes the steering mode, speed, altitude direction, etc.
-This app allows a user to upload to our server a training and flight data file. Then an anomaly detection algorithm learn the given info and detect anomalies found in the flight data file. The anomalies are displayed in the app in a list in which the user can see exactly where and when the anomaly has occurred.
+Our users are flight researchers or pilots who want to do a test flight form anywhere using thier phone and a PC.
 
 ## Prerequisites
-
-- Download WebStrom/VS Code to run the server.
-- Java Script- Node JS.
-- Download all required packages with the command: "npm install".
+- Enable Developers setting and USB Debugging on your Android Phone.
+- Download AndroidS/Clion to load this app onto your Android device.
 
 ## Getting Started
-
 Clone the project via the command line:
 ```sh
-git clone https://github.com/Gitit-Shapira/Web-App.git
+git clone https://github.com/Waccsadac/Remote_Control_Joystick.git
 ```
 
-Now, open the ```Server.js``` source file and run the code to open the server.
+Now, connect your Android device to your computer and load the app onto your device from your favorate IDE.
 
-Now to use the app go to your favorite web browser and connect to the server with: localhost:8080:
+Now to use the app- connect to a computer which is currently running Flight Gear and is on the same network as your Android device, then enter this computer public IP and the currently open port on Flight Gear.
 
 A screenshot is attached:
 
 ![Main_Screen.png](Images/Main_Screen.png)
 
-Make sure to click the ```Submit``` button after uploading files and choosing algorithm setting.
-
 ## Features
-- Choose Learn\Data file CSV - click on the ```Choose Learn File``` \ ```Choose Detect File```. You will be asked to upload a CSV file that contains the flight info (a CSV file in which flight data sampled at some rate is recorded).
-- Choose an algorithm:- This allows you to select an anomaly detection algorithm. The algorithm will detect at what moments in time an anomaly occurred and will display it in a table
-- You can use one of our demo CSV files: 
-  1. https://github.com/Gitit-Shapira/Web-App/blob/main/Demo%20files/train.csv - file that containing the learning data.
-  2. https://github.com/Gitit-Shapira/Web-App/blob/main/Demo%20files/test.csv - real Flight Data for anomalies detection. 
+You will be asked to enter IP/Port to a computer the currently run Flight Gear.
+- Connect to Flight Gear after entering IP/Port and start controlling the plane.
+- Click on Disconnect to disconnect from the current Flight Gear server if you wish to connect to a new Flight Gear Server.
+
 
 ## Project Hierarchy
 
 The main files in our project are as follow:
 
-- Controller:
-    - Server.js
-    - buildTable.js
+- ViewModel:
+    - ViewModel
 - Model:
-    - Detector.js
-    - TimeSeries.js
-    - AnomalyTimeSteps.js
+    - FGPlayer
 - View:
-    - index.html - Display the app screen.
+    - Joystick
+    - MainActivity
 
 ## More documentation
 - UML:
 ![UML.png](app/src/main/res/UML.png)
 
 ## Demo video
-https://www.youtube.com/watch?v=Ic3aTA65_wQ
+
+
 ## Writers
 - Gitit Shapira
 - Roey Peleg
-- Linoy Sela
-- Yair Yardeni
 
 
 

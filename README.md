@@ -48,7 +48,7 @@ The main files in our project are as follow:
 ![UML.png](app/src/main/res/UML.png)
 
 ## Demo video
-https://youtu.be/V6h_VHExI3o
+https://youtu.be/I0Qjw2n65Is
 
 ## Writers
 - Gitit Shapira

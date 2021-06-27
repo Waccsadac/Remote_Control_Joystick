@@ -58,8 +58,7 @@ The main files in our project are as follow:
 
 ## More documentation
 - UML:
-app/src/main/res/Android App.png
-![Android App.png](app/src/main/res/Android App.png)
+![UML.png](app/src/main/res/UML.png)
 
 ## Demo video
 https://www.youtube.com/watch?v=Ic3aTA65_wQ

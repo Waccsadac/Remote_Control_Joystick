@@ -29,9 +29,7 @@ A screenshot is attached:
 
 ## Features
 You will be asked to enter IP/Port to a computer the currently run Flight Gear.
-- Connect to Flight Gear after entering IP/Port and start controlling the plane.
-- Click on Disconnect to disconnect from the current Flight Gear server if you wish to connect to a new Flight Gear Server.
-
+- Connect to Flight Gear after entering IP/Port and click on Connect to start controlling the plane
 
 ## Project Hierarchy
 

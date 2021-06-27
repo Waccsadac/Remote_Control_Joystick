@@ -25,7 +25,7 @@ public class ViewModel {
     }
 
     public void update_throttle(int progress) {
-        model.update_throttle((float)(-1 + 0.02 * progress));
+        model.update_throttle((float)(0.01 * progress));
     }
 
     public void update_rudder(int progress) {
